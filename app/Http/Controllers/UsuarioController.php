@@ -12,9 +12,9 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        return view('usuarios.index')[
-            'usuario' = usuario
-        ]
+        return view('usuarios.index', [
+            'usuarios' => Usuario::all(),
+        ]);
     }
 
     /**
@@ -22,7 +22,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        return view('usuarios.create');
     }
 
     /**
@@ -30,7 +30,23 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nombre' => 'required|max:255',
+            'nombreUsuario' => 'required|max:255',
+            'biografia' => 'required|max:255',
+            'email' => 'required|max:255',
+            'contraseña' => 'required|min:8',
+        ]);
+
+        $usuario = new Usuario();
+        $usuario->nombreUsuario = $validated['nombreUsuario'];
+        $usuario->email = $validated['email'];
+        $usuario->nombre = $validated['nombre'];
+        $usuario->contraseña = $validated['contraseña'];
+        $usuario->biografia = $validated['biografia'];
+        $usuario->save();
+        session()->flash('success', 'El usuario se ha creado correctamente.');
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -38,7 +54,9 @@ class UsuarioController extends Controller
      */
     public function show(Usuario $usuario)
     {
-        //
+        return view('usuarios.show', [
+            'usuario' => $usuario,
+        ]);
     }
 
     /**
@@ -46,7 +64,9 @@ class UsuarioController extends Controller
      */
     public function edit(Usuario $usuario)
     {
-        //
+        return view('usuarios.edit',[
+            'usuario' => $usuario,
+        ]);
     }
 
     /**
@@ -54,7 +74,22 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, Usuario $usuario)
     {
-        //
+        $validated = $request->validate([
+            'nombre' => 'required|max:255',
+            'nombreUsuario' => 'required|max:255',
+            'biografia' => 'required|max:255',
+            'email' => 'required|max:255',
+            'contraseña' => 'required|min:8',
+        ]);
+
+        $usuario->nombreUsuario = $validated['nombreUsuario'];
+        $usuario->email = $validated['email'];
+        $usuario->nombre = $validated['nombre'];
+        $usuario->contraseña = $validated['contraseña'];
+        $usuario->biografia = $validated['biografia'];
+        $usuario->save();
+        session()->flash('success', 'El usuario se ha creado correctamente.');
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -62,6 +97,8 @@ class UsuarioController extends Controller
      */
     public function destroy(Usuario $usuario)
     {
-        //
+        $usuario->delete();
+        session()->flash('success', 'El usuario se ha eliminado correctamente.');
+        return redirect()->route('usuarios.index');
     }
 }
