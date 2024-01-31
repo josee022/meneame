@@ -1,6 +1,7 @@
 <?php
 
-
+use App\Http\Controllers\NoticiaController;
+use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,7 @@ Route::get('/', function () {
 });
 
 Route::resource('peliculas', NoticiaController::class);
-
+Route::resource('comentarios', ComentarioController::class);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
