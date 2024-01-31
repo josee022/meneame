@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Noticia;
 use Illuminate\Http\Request;
 
+
 class NoticiaController extends Controller
 {
     /**
@@ -12,7 +13,9 @@ class NoticiaController extends Controller
      */
     public function index()
     {
-        //
+        return view('noticias.index', [
+            'noticias' => Noticia::all(),
+        ]);
     }
 
     /**
@@ -20,7 +23,7 @@ class NoticiaController extends Controller
      */
     public function create()
     {
-        //
+        return view('noticias.create');
     }
 
     /**
@@ -28,7 +31,19 @@ class NoticiaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'titulo'=> 'required|max:255',
+            'descripcion' => 'required|max:500',
+        ]);
+
+
+        $Noticia = new Noticia();
+        $Noticia->titulo = $validated['titulo'];
+        $Noticia->descripcion = $validated['descripcion'];
+        $Noticia->save();
+        session()->flash('success', 'La noticia se ha añadido correctamente.');
+        return redirect()->route('noticias.index');
+
     }
 
     /**
@@ -36,7 +51,10 @@ class NoticiaController extends Controller
      */
     public function show(Noticia $noticia)
     {
-        //
+        return view('noticias.show', [
+            'noticia' => $noticia,
+            'descripcion' => $noticia,
+        ]);
     }
 
     /**
@@ -44,7 +62,10 @@ class NoticiaController extends Controller
      */
     public function edit(Noticia $noticia)
     {
-        //
+        return view('noticias.edit', [
+            'noticia' => $noticia,
+            'autor' => $noticia,
+        ]);
     }
 
     /**
@@ -52,14 +73,26 @@ class NoticiaController extends Controller
      */
     public function update(Request $request, Noticia $noticia)
     {
-        //
+        $validated = $request->validate([
+            'titulo' => 'required|max:255',
+            'descripcion' => 'required|max:500',
+        ]);
+
+        $noticia->titulo = $validated['titulo'];
+        $noticia->descripcion = $validated['descripcion'];
+        $noticia->save();
+        session()->flash('success', 'Noticia editada correctamente');
+        return redirect()->route('noticias.index');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Noticia $noticia)
     {
-        //
+        $noticia->delete();
+        session()->flash('success', 'La noticia se ha eliminado correctamente.');
+        return redirect()->route('noticias.index');
     }
 }
