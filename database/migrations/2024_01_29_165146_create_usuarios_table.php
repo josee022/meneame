@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('biografia');
-            $table->string('nombre_usuario');
+            $table->string('nombreUsuario');
             $table->string('email');
             $table->string('contraseña');
             $table->dateTime('fechaNac');
             $table->timestamps();
-            $table->unique(['nombre_usuario', 'email']);
+            $table->unique(['nombreUsuario', 'email']);
         });
     }
 

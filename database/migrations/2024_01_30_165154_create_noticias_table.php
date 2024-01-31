@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('noticias', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
+            $table->integer('meneos');
+            $table->foreignId('usuario_id')->constrained();
             $table->string('descripcion');
             $table->foreignId('comentario_id')->constrained();
             $table->timestamps();
