@@ -4,17 +4,12 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Título
+                        ID del usuario
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Autor
+                        Informacion
                     </th>
-                    <th scope="col" class="px-6 py-3">
-                        Editar
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Borrar
-                    </th>
+
                 </tr>
             </thead>
             <tbody>
@@ -22,17 +17,17 @@
                     <tr class="bg-white border-b">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                             <a href="{{ route('comentarios.show', ['comentario' => $comentario]) }}" class="font-medium text-blue-600 hover:underline">
-                                {{ $comentario->titulo }}
+                                {{ $comentario->usuario_id }}
                             </a>
                         </th>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                             <a href="{{ route('comentarios.show', ['comentario' => $comentario]) }}" class="font-medium text-blue-600 hover:underline">
-                                {{ $comentario->autor }}
+                                {{ $comentario->informacion }}
                             </a>
                         </th>
                         <td class="px-6 py-4">
                             <a href="{{ route('comentarios.edit', ['comentario' => $comentario]) }}" class="font-medium text-blue-600 hover:underline">
-                                <x-primary-button>
+                                <x-primary-button class="bg-green-500">
                                     Editar
                                 </x-primary-button>
                             </a>
@@ -51,7 +46,7 @@
             </tbody>
         </table>
         <form action="{{ route('comentarios.create') }}" class="flex justify-center mt-4 mb-4">
-            <x-primary-button class="bg-green-500">Insertar un nuevo comentario</x-primary-button>
+            <x-primary-button class="bg-green-500">Ingresa un nuevo comentario</x-primary-button>
         </form>
     </div>
 </x-app-layout>

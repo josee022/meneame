@@ -9,6 +9,8 @@ class Noticia extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['titulo', 'meneos', 'imagen', 'descripcion', 'usuario_id', 'comentario_id'];
+
     public function usuario()
     {
         return $this->belongsTo(Usuario::class);

@@ -3,7 +3,6 @@
         <form method="POST" action="{{ route('noticias.store') }}">
             @csrf
 
-            <!-- Título -->
             <div>
                 <x-input-label for="titulo" :value="'Títular'" />
                 <x-text-input id="titulo" class="block mt-1 w-full"
@@ -20,14 +19,18 @@
                 <x-input-error :messages="$errors->get('descripcion')" class="mt-2" />
             </div>
 
+            <label for="imagen">Imagen de la noticia : </label>
+            <input type="file" name="imagen" accept="image/*">
+
+
             <div class="flex items-center justify-end mt-4">
-                <a href="{{ route('libros.index') }}">
+                <a href="{{ route('noticias.index') }}">
                     <x-secondary-button class="ms-4">
                         Volver
                         </x-primary-button>
                 </a>
                 <x-primary-button class="ms-4">
-                    + publicar
+                    Publicar noticia
                 </x-primary-button>
             </div>
         </form>

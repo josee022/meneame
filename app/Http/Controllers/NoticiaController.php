@@ -37,10 +37,14 @@ class NoticiaController extends Controller
         ]);
 
 
-        $Noticia = new Noticia();
-        $Noticia->titulo = $validated['titulo'];
-        $Noticia->descripcion = $validated['descripcion'];
-        $Noticia->save();
+        $noticia = new Noticia();
+        $noticia->titulo = $validated['titulo'];
+        $noticia->descripcion = $validated['descripcion'];
+        if ($request->hasFile('imagen')) {
+            $imagenPath = $request->file('imagen')->store('imagenes/noticias', 'public');
+            $noticia->imagen = $imagenPath;
+        }
+        $noticia->save();
         session()->flash('success', 'La noticia se ha añadido correctamente.');
         return redirect()->route('noticias.index');
 

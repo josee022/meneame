@@ -3,9 +3,8 @@
         <form method="POST" action="{{ route('comentarios.store') }}">
             @csrf
 
-            <!-- Título -->
             <div>
-                <x-input-label for="informacion" :value="'Comentario'" />
+                <x-input-label for="informacion" :value="'Informacion del comentario'" />
                 <x-text-input id="informacion" class="block mt-1 w-full"
                     type="text" name="informacion" :value="old('informacion')" required
                     autofocus autocomplete="informacion" />
@@ -18,7 +17,7 @@
                         </x-primary-button>
                 </a>
                 <x-primary-button class="ms-4">
-                    Insertar
+                    Subir comentario
                 </x-primary-button>
             </div>
         </form>
