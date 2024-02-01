@@ -6,6 +6,18 @@
             @method('PUT')
 
             <div>
+                <x-input-label for="informacion" :value="'Título del comentario'" />
+                <x-text-input id="informacion" class="block mt-1 w-full"
+                    type="text" name="informacion" :value="old('informacion', $comentario->informacion)" required
+                    autofocus autocomplete="informacion" />
+                <x-input-error :messages="$errors->get('informacion')" class="mt-2" />
+            </div>
+            <div>
+                <x-input-label for="usuario_id" :value="'Autor del comentario'" />
+                <x-text-input id="usuario_id" class="block mt-1 w-full"
+                    type="text" name="usuario_id" :value="old('usuario_id', $comentario->usuario_id)" required
+                    autofocus autocomplete="usuario_id" />
+                <x-input-error :messages="$errors->get('usuario_id')" class="mt-2" />
                 <x-input-label for="usuario_id" :value="'Usuario del comentario'" />
                 <x-text-input id="usuario_id" class="block mt-1 w-full"
                     type="text" name="usuario_id" :value="old('usuario_id', $comentario->usuario_id)" required

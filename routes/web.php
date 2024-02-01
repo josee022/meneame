@@ -22,7 +22,6 @@ Route::get('/', function () {
 });
 
 Route::resource('noticias', NoticiaController::class);
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

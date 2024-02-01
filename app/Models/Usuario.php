@@ -9,6 +9,11 @@ class Usuario extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nombre', 'biografia', 'nombreUsuario', 'email', 'password', 'fechaNac',
+    ];
+
+
     public function noticias()
     {
         return $this->hasMany(Noticia::class);

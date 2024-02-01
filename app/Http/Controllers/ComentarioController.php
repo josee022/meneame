@@ -36,7 +36,6 @@ class ComentarioController extends Controller
 
         $comentario = new Comentario();
         $comentario->informacion = $request->input('informacion');
-        $comentario->usuario_id = $request->input('usuario_id');
         $comentario->save();
         session()->flash('success', 'El comentario se ha creado correctamente.');
         return redirect()->route('comentarios.index');
