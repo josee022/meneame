@@ -5,7 +5,6 @@
             @csrf
             @method('PUT')
 
-            <!-- Título -->
             <div>
                 <x-input-label for="titulo" :value="'Títular'" />
                 <x-text-input id="titulo" class="block mt-1 w-full"
