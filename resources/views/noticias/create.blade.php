@@ -19,6 +19,9 @@
                 <x-input-error :messages="$errors->get('descripcion')" class="mt-2" />
             </div>
 
+            <label for="imagen">Imagen de la noticia : </label>
+            <input type="file" name="imagen" accept="image/*">
+
 
             <div class="flex items-center justify-end mt-4">
                 <a href="{{ route('noticias.index') }}">

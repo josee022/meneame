@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('meneos');
             $table->foreignId('usuario_id')->constrained();
             $table->string('descripcion');
+            $table->string('imagen')->nullable();
             $table->foreignId('comentario_id')->constrained();
             $table->timestamps();
         });
