@@ -20,4 +20,11 @@ class Noticia extends Model
     {
         return $this->hasMany(Comentario::class);
     }
+
+    public function meneos(Noticia $noticia)
+    {
+
+        $noticia->increment('meneos');
+        return redirect()->route('noticias.show', ['noticia' => $noticia]);
+    }
 }
