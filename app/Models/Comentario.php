@@ -9,13 +9,18 @@ class Comentario extends Model
 {
     use HasFactory;
 
-    public function usuario()
+    public function user()
     {
-        return $this->belongsTo(Usuario::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function noticia()
+    public function comentarios()
     {
-        return $this->belongsTo(Noticia::class);
+        return $this->morphMany(Comentario::class, 'comentable');
+    }
+
+    public function comentable()
+    {
+        return $this->morphTo(Noticia::class);
     }
 }
