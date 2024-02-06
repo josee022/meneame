@@ -9,6 +9,18 @@ class Noticia extends Model
 {
     use HasFactory;
 
+    const MIME_IMAGEN = 'jpg';
+
+    private function imagen_url_relativa()
+    {
+        return '/uploads/' . $this->imagen;
+    }
+
+    private function miniatura_url_relativa()
+    {
+        return '/uploads/' . $this->miniatura;
+    }
+
     protected $fillable = ['titulo', 'meneos', 'imagen', 'descripcion', 'usuario_id', 'comentario_id'];
 
     public function usuario()
