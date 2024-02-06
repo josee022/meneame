@@ -24,8 +24,7 @@ class Noticia extends Model
 
     protected $fillable = ['titulo', 'meneos', 'imagen', 'descripcion', 'usuario_id', 'comentario_id'];
 
-    public function usuario()
-      
+
     public function meneadores()
 
     {
