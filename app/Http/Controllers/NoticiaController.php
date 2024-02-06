@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Noticia;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class NoticiaController extends Controller
 {
@@ -99,4 +101,30 @@ class NoticiaController extends Controller
         session()->flash('success', 'La noticia se ha eliminado correctamente.');
         return redirect()->route('noticias.index');
     }
+
+    public function cambiar_imagen(Noticia $noticia)
+    {
+        return view('noticias.cambiar_imagen', [
+            'noticia' => $noticia,
+        ]);
+    }
+
+    /*public function guardar_imagen(Noticia $noticia, Request $request)
+    {
+        $mime = Noticia::MIME_IMAGEN;
+
+        $request->validate([
+            'imagen_url' => "required|mimes:$mime|max:500",
+        ]);
+
+        $imagen = $request->file('imagen_url');
+        Storage::makeDirectory('public/uploads');
+
+        $imagen_original = $imagen;
+        $manager = new ImageManager(new Driver());
+        $noticia->guardarImagen($imagen, $noticia->imagen, 400, $manager);
+        $imagen = $imagen_original;
+        $noticia->guardarImagen($imagen, $noticia->miniatura, 200, $manager);
+        return redirect()->route('noticias.index');
+    }*/
 }
