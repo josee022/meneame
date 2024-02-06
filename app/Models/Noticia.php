@@ -9,6 +9,7 @@ class Noticia extends Model
 {
     use HasFactory;
 
+
     const MIME_IMAGEN = 'jpg';
 
     private function imagen_url_relativa()
@@ -24,19 +25,31 @@ class Noticia extends Model
     protected $fillable = ['titulo', 'meneos', 'imagen', 'descripcion', 'usuario_id', 'comentario_id'];
 
     public function usuario()
+      
+    public function meneadores()
+
     {
-        return $this->belongsTo(Usuario::class);
+        return $this->belongsToMany(User::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function etiquetas()
+    {
+        return $this->belongsToMany(Etiqueta::class);
     }
 
     public function comentarios()
     {
-        return $this->hasMany(Comentario::class);
+        return $this->morphMany(Comentario::class, 'comentable');
     }
 
-    public function meneos(Noticia $noticia)
-    {
-
-        $noticia->increment('meneos');
-        return redirect()->route('noticias.show', ['noticia' => $noticia]);
-    }
+    //public function meneos(Noticia $noticia)
+    //{
+    //    $noticia->increment('meneos');
+    //    return redirect()->route('noticias.show', ['noticia' => $noticia]);
+    //}
 }
