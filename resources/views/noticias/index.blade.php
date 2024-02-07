@@ -6,9 +6,6 @@
                     <th scope="col" class="px-6 py-3">
                         Imagen
                     </th>
-                    <th scope="col" class="px-6 py-3" colspan="2">
-                        Meneos
-                    </th>
                     <th scope="col" class="px-6 py-3">
                         Título
                     </th>
@@ -28,18 +25,13 @@
                                 <img src="{{ asset($noticia->imagen_url) }}" />
                             @endif
                         </th>
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <a href="{{ route('noticias.show', ['noticia' => $noticia]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                {{ $noticia->meneos }}
-                            </a>
-                        </th>
 
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             @if ($articulo->existeImagen())
                                 <img src="{{ asset($articulo->imagen_url) }}" />
                             @endif
                         </th>
-                        
+
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <a href="{{ route('noticias.show', ['noticia' => $noticia]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                                 {{ $noticia->titulo }}
