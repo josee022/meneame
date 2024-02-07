@@ -19,6 +19,7 @@ nav select option { background-color: #495057; color: #fff; }
 nav select option:checked { background-color: #6c757d; }
 
 nav select optgroup { background-color: transparent; }
+
 .navbar {
             display: flex;
             justify-content: center;
@@ -27,8 +28,11 @@ nav select optgroup { background-color: transparent; }
         }
 
         .navbar a {
+
             color: #555555;
             text-dergb(185, 185, 185)tion: none;
+            color: #b4b4b4;
+            text-dergb(190, 190, 190)tion: none;
             padding: 10px;
             margin: 0 5px;
             border-radius: 5px;
@@ -37,8 +41,10 @@ nav select optgroup { background-color: transparent; }
         }
 
         .navbar a:hover {
+
             background-color: #cecaca;
         }
+
 
     </style>
     <nav style="display: flex; align-items: center;">
@@ -63,6 +69,11 @@ nav select optgroup { background-color: transparent; }
                 <option value="fisgona">🔍 Fisgona</option>
             </optgroup>
         </select>
+
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Buscar">
+        </form>
+
         <div>
         @if (Route::has('login'))
             <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
@@ -85,5 +96,19 @@ nav select optgroup { background-color: transparent; }
             <a href="populares.html"> 🔥 Populares</a>
             <a href="mas-visitadas.html"> 🔝 Más visitadas</a>
         </div>
+
+        <div id="results">
+            @if (!empty($noticias))
+                @foreach ($noticias as $noticia)
+                    <div class="noticia">
+                        <h2>{{ $noticia->titulo }}</h2>
+                        <p>{{ $noticia->descripcion }}</p>
+                    </div>
+                @endforeach
+            @else
+                <p>No se encontraron noticias con esa palabra clave.</p>
+            @endif
+        </div>
+
     </body>
 </html>

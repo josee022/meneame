@@ -15,12 +15,7 @@
                 autofocus autocomplete="titulo" disabled />
         </div>
 
-        <div>
-            <x-input-label for="meneos" :value="'Contador de meneos'" />
-            <x-text-input id="meneos" class="block mt-1 w-full"
-                type="text" name="meneos" :value="old('meneos', $noticia->meneos)" required
-                autofocus autocomplete="titulo" disabled />
-        </div>
+
 
         <div>
             <x-input-label for="usuario_id" :value="'Usuario propietario de la noticia'" />
