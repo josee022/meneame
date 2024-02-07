@@ -109,6 +109,17 @@ class NoticiaController extends Controller
         ]);
     }
 
+    public function buscar(Request $request)
+{
+    $searchTerm = $request->input('search');
+
+    $noticias = Noticia::where('titulo', 'like', "%$searchTerm%")
+                        ->orWhere('descripcion', 'like', "%$searchTerm%")
+                        ->get();
+
+    return view('welcome', ['noticias' => $noticias]);
+}
+
     /*public function guardar_imagen(Noticia $noticia, Request $request)
     {
         $mime = Noticia::MIME_IMAGEN;
