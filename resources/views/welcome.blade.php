@@ -19,6 +19,27 @@ nav select option { background-color: #495057; color: #fff; }
 nav select option:checked { background-color: #6c757d; }
 
 nav select optgroup { background-color: transparent; }
+
+.navbar {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .navbar a {
+            color: #b4b4b4;
+            text-dergb(190, 190, 190)tion: none;
+            padding: 10px;
+            margin: 0 5px;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #2c2c2c;
+        }
     </style>
     <nav style="display: flex; align-items: center;">
         <img src="{{ asset('fotos/meneame_logo.png') }}" alt="Descripción de la imagen">
@@ -42,6 +63,11 @@ nav select optgroup { background-color: transparent; }
                 <option value="fisgona">🔍 Fisgona</option>
             </optgroup>
         </select>
+
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Buscar">
+        </form>
+
         <div>
         @if (Route::has('login'))
             <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
@@ -57,6 +83,14 @@ nav select optgroup { background-color: transparent; }
             </div>
         @endif</nav>
     <body class="antialiased">
+
+        <div class="navbar">
+            <a href=""> 🏠 Portada</a>
+            <a href="nuevas.html"> 🆕 Nuevas</a>
+            <a href="articulos.html"> 📄 Artículos</a>
+            <a href="populares.html"> 🔥 Populares</a>
+            <a href="mas-visitadas.html"> 🔝 Más visitadas</a>
+        </div>
 
     </body>
 </html>
