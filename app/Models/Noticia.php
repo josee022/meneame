@@ -14,10 +14,6 @@ class Noticia extends Model
 {
     use HasFactory;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4808544e0265ca769cc889662c7198b120609b8e
     const MIME_IMAGEN = 'jpg';
 
     private function imagen_url_relativa()
@@ -30,12 +26,10 @@ class Noticia extends Model
         return '/uploads/' . $this->miniatura;
     }
 
-<<<<<<< HEAD
-=======
+
     protected $fillable = ['titulo', 'meneos', 'imagen', 'descripcion', 'usuario_id', 'comentario_id'];
 
 
->>>>>>> 4808544e0265ca769cc889662c7198b120609b8e
     public function meneadores()
 
     {
