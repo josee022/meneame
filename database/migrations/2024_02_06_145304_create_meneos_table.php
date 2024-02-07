@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comentarios', function (Blueprint $table) {
-            $table->id();
+        Schema::create('meneos', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained();
-            $table->string('contenido');
+            $table->foreignId('noticia_id')->constrained();
+            $table->unique(['user_id', 'noticia_id']);
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comentarios');
+        Schema::dropIfExists('meneos');
     }
 };

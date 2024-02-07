@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Usuario;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
@@ -12,8 +12,8 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        return view('usuarios.index', [
-            'usuarios' => Usuario::all(),
+        return view('users.index', [
+            'usuarios' => User::all(),
         ]);
     }
 
@@ -22,7 +22,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        return view('usuarios.create');
+        return view('users.create');
     }
 
     /**
@@ -38,7 +38,7 @@ class UsuarioController extends Controller
             'contraseña' => 'required|min:8',
         ]);
 
-        $usuario = new Usuario();
+        $usuario = new User();
         $usuario->nombreUsuario = $validated['nombreUsuario'];
         $usuario->email = $validated['email'];
         $usuario->nombre = $validated['nombre'];
@@ -46,15 +46,15 @@ class UsuarioController extends Controller
         $usuario->biografia = $validated['biografia'];
         $usuario->save();
         session()->flash('success', 'El usuario se ha creado correctamente.');
-        return redirect()->route('usuarios.index');
+        return redirect()->route('users.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Usuario $usuario)
+    public function show(User $usuario)
     {
-        return view('usuarios.show', [
+        return view('users.show', [
             'usuario' => $usuario,
         ]);
     }
@@ -62,9 +62,9 @@ class UsuarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Usuario $usuario)
+    public function edit(User $usuario)
     {
-        return view('usuarios.edit',[
+        return view('users.edit',[
             'usuario' => $usuario,
         ]);
     }
@@ -72,7 +72,7 @@ class UsuarioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(Request $request, User $usuario)
     {
         $validated = $request->validate([
             'nombre' => 'required|max:255',
@@ -89,16 +89,16 @@ class UsuarioController extends Controller
         $usuario->biografia = $validated['biografia'];
         $usuario->save();
         session()->flash('success', 'El usuario se ha creado correctamente.');
-        return redirect()->route('usuarios.index');
+        return redirect()->route('users.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Usuario $usuario)
+    public function destroy(User $usuario)
     {
         $usuario->delete();
         session()->flash('success', 'El usuario se ha eliminado correctamente.');
-        return redirect()->route('usuarios.index');
+        return redirect()->route('users.index');
     }
 }

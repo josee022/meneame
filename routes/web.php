@@ -22,6 +22,13 @@ Route::get('/', function () {
 });
 
 Route::resource('noticias', NoticiaController::class);
+
+Route::get('/cambiar_imagen/{noticia}', [NoticiaController::class, 'cambiar_imagen'])
+    ->name('noticias.cambiar_imagen')->whereNumber('noticia');
+
+Route::post('/cambiar_imagen/{noticia}', [NoticiaController::class, 'guardar_imagen'])
+->name('noticias.guardar_imagen')->whereNumber('noticia');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

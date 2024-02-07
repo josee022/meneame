@@ -68,7 +68,6 @@ nav select optgroup { background-color: transparent; }
             <input type="text" id="searchInput" placeholder="Buscar">
         </form>
 
-
         <div>
         @if (Route::has('login'))
             <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
